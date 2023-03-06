@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoserver
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echoserver
+  template:
+    metadata:
+      labels:
+        app: echoserver
+    spec:
+      containers:
+      - image: jmalloc/echo-server
+        imagePullPolicy: IfNotPresent
+        name: echoserver
+        resources:
+          requests:
+              memory: "32Mi"
+              cpu: "0.05"
+          limits:
+              memory: "64Mi"
+              cpu: "0.10"
+        ports:
+        - containerPort: 8080

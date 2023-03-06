@@ -1,0 +1,32 @@
+# Depends on cert-manager chart CRDs
+# In Production with Flux, CRDs should be installed as a main dependency for other Kustomizations
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-adimen-dns
+spec:
+  acme:
+    email: dkuleshov@adimen.tech
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-adimen-dns
+    solvers:
+      - selector:
+          dnsZones:
+            - tests.adimen.tech
+        dns01:
+          route53:
+            region: us-east-1
+            hostedZoneID: Z060197228D8COEU1MGSM
+            accessKeyID: AKIAWN2KE5ZVV5CFHBHK
+            secretAccessKeySecretRef:
+              name: aws-credentials
+              key: AWS_SECRET_ACCESS_KEY
