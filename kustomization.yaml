@@ -1,0 +1,13 @@
+# Just for testing purposes, so need to repeast multiple time until there won't be any issues
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- gitops/infrastructure/namespaces.yaml
+- gitops/flux-system/gotk-components.yaml
+- gitops/infrastructure/sources/git/istio.yaml
+- gitops/infrastructure/sources/helm/jetstack.yaml
+- gitops/infrastructure/istio-operator/release.yaml
+- gitops/infrastructure/cert-manager/release.yaml
+- gitops/apps/istio
+- gitops/apps/cert-manager/cluster-issuer.yaml
+- gitops/apps/echo-service

@@ -1,0 +1,20 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  namespace: istio-system
+  name: istiocontrolplane
+spec:
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway
+        k8s:
+          overlays:
+            - kind: Service
+              name: istio-ingressgateway
+              patches:
+                - path: spec.type
+                  value: NodePort
+                - path: spec.ports.[name:http2].nodePort
+                  value: 31080
+                - path: spec.ports.[name:https].nodePort
+                  value: 31443

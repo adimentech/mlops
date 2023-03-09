@@ -7,14 +7,6 @@ Easy ML platform
 kind create cluster --name mlops --config kind-config.yaml
 ```
 
-### Istio installation
-for now we install istio with `istioctl`
-```shell
-istioctl install
-k patch svc -n istio-system istio-ingressgateway -p '{"spec": {"type": "NodePort"}}'
-# have to edit service after that to set expected nodePort values for http and https
-```
-
 ## Bootstrap Flux
 ```shell
 flux bootstrap github --owner=adimentech \
