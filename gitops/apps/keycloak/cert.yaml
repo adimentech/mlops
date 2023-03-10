@@ -3,7 +3,6 @@ kind: Certificate
 metadata:
   name: keycloak
 spec:
-#  isCA: true
   commonName: keycloak.local
   secretName: keycloak-certs
   privateKey:

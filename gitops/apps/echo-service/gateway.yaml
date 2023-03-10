@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: echoserver
+  namespace: default
 spec:
   selector:
     istio: ingressgateway # use istio default ingress gateway
@@ -14,21 +15,24 @@ spec:
       mode: SIMPLE
       credentialName: echoserver-certs
     hosts:
-    - echoserver.testing
+    - echoserver.local
   - port:
       number: 80
       name: http
       protocol: HTTP
+    tls:
+      redirectHttps: true
     hosts:
-      - echoserver.testing
+      - echoserver.local
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: echoserver
+  namespace: default
 spec:
   hosts:
-  - "echoserver.testing"
+  - "echoserver.local"
   gateways:
   - echoserver
   http:
