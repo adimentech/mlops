@@ -59,4 +59,4 @@ spec:
     name: oauth2-proxy
   rules:
   - to:
-      hosts: ["echoserver.local"]
+      - hosts: ["echoserver.local"]
