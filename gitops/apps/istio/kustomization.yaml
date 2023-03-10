@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - istio.yaml
   - ingress-class.yaml
-  - perr-authentication.yaml
+#  - perr-authentication.yaml
