@@ -16,11 +16,10 @@ spec:
       labels:
         app: authservice
     spec:
-      serviceAccountName: bookinfo-productpage
       volumes:
-        - name: bookinfo-authservice-configmap-volume # declare the volume containing the authservice ConfigMap
+        - name: config
           configMap:
-            name: bookinfo-authservice-configmap
+            name: authservice-config
       containers:
       - name: authservice # authservice needs to be deployed in the sample Pod as the productpage
         # TODO(incfly): change to a proper project wide container registry.
@@ -29,7 +28,7 @@ spec:
         ports:
           - containerPort: 10003
         volumeMounts:
-          - name: bookinfo-authservice-configmap-volume # mount the volume containing the authservice ConfigMap
+          - name: config
             mountPath: /etc/authservice
 ---
 apiVersion: v1
@@ -49,7 +48,7 @@ spec:
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: bookinfo-authservice-configmap
+  name: authservice-config
   namespace: istio-system
 data:
   config.json: |
