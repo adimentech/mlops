@@ -21,7 +21,7 @@ spec:
       name: http
       protocol: HTTP
     tls:
-      redirectHttps: true
+      httpsRedirect: true
     hosts:
       - echoserver.local
 ---
