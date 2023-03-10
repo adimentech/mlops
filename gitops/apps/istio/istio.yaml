@@ -6,7 +6,8 @@ metadata:
 spec:
   meshConfig:
     extensionProviders:
-      - envoyExtAuthzGrpc:
+      - name: authservice
+        envoyExtAuthzGrpc:
           service: authservice.istio-system.svc.cluster.local
           port: "10003"
   components:
@@ -49,7 +50,7 @@ spec:
   action: CUSTOM
   provider:
     # Extension provider configured when we installed Istio
-    name: oauth2-proxy
+    name: authservice
   rules:
   - to:
       - operation:
