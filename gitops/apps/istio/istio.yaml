@@ -4,6 +4,18 @@ metadata:
   namespace: istio-system
   name: istiocontrolplane
 spec:
+  meshConfig:
+    extensionProviders:
+      - name: oauth2-proxy
+        envoyExtAuthzHttp:
+          service: oauth2-proxy.oauth2-proxy.svc.cluster.local
+          port: 80
+          includeRequestHeadersInCheck:
+            - cookie
+          headersToUpstreamOnAllow:
+            - authorization
+          headersToDownstreamOnDeny:
+            - set-cookie
   components:
     ingressGateways:
       - name: istio-ingressgateway
@@ -18,3 +30,33 @@ spec:
                   value: 31080
                 - path: spec.ports.[name:https].nodePort
                   value: 31443
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: istio-ingressgateway
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  jwtRules:
+  - issuer: "https://keycloak.local/realms/mlops"
+    jwksUri: "https://keycloak.local/realms/mlops/protocol/openid-connect/certs"
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: istio-ingressgateway
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+  action: CUSTOM
+  provider:
+    # Extension provider configured when we installed Istio
+    name: oauth2-proxy
+  rules:
+  - to:
+      hosts: ["echoserver.local"]
