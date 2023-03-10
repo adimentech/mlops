@@ -19,19 +19,4 @@ spec:
     hostname: keycloak.local
   ingress:
     enabled: false
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: keycloak
-  name: keycloak
-  namespace: keycloak
-spec:
-  ports:
-  - port: 443
-    protocol: TCP
-    targetPort: 8443
-  selector:
-    app: keycloak
-  type: ClusterIP
+
