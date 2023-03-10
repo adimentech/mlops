@@ -6,16 +6,9 @@ metadata:
 spec:
   meshConfig:
     extensionProviders:
-      - name: oauth2-proxy
-        envoyExtAuthzHttp:
-          service: oauth2-proxy.oauth2-proxy.svc.cluster.local
-          port: 80
-          includeRequestHeadersInCheck:
-            - cookie
-          headersToUpstreamOnAllow:
-            - authorization
-          headersToDownstreamOnDeny:
-            - set-cookie
+      - envoyExtAuthzGrpc:
+          service: authservice.istio-system.svc.cluster.local
+          port: "10003"
   components:
     ingressGateways:
       - name: istio-ingressgateway
