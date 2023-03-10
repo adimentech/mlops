@@ -51,13 +51,18 @@ metadata:
 data:
   config.json: |
     {
-      "listen_address": "127.0.0.1",
+      "listen_address": "0.0.0.0",
       "listen_port": "10003",
       "log_level": "trace",
       "threads": 8,
+      "allow_unmatched_requests": "false",
       "chains": [
         {
           "name": "idp_filter_chain",
+          "match": {
+            "header": ":authority",
+            "prefix": "localhost",
+          },
           "filters": [
           {
             "oidc":
