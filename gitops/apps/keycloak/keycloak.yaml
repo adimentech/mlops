@@ -17,7 +17,7 @@ spec:
     httpEnabled: true
 
   hostname:
-    hostname: mlops.adimen.tech/auth
+    hostname: mlops.adimen.tech
   ingress:
     enabled: false
   additionalOptions:
