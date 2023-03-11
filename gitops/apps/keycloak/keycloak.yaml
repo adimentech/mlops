@@ -15,8 +15,9 @@ spec:
       key: password
   http:
     httpEnabled: true
+
   hostname:
-    hostname: mlops.adimen.tech
+    hostname: mlops.adimen.tech/auth
   ingress:
     enabled: false
 
