@@ -51,7 +51,6 @@ spec:
       app: echoserver
   jwtRules:
   - issuer: "https://keycloak.local/realms/mlops"
-    jwksUri: "https://keycloak.local/realms/mlops/protocol/openid-connect/certs"
     forwardOriginalToken: true
 ---
 apiVersion: security.istio.io/v1beta1
