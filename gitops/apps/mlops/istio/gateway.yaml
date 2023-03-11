@@ -13,9 +13,9 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: mlops.adimen.local-tls
+      credentialName: mlops.adimen.tech-tls
     hosts:
-    - mlops.adimen.local
+    - mlops.adimen.tech
   - port:
       number: 80
       name: http
@@ -23,4 +23,4 @@ spec:
     tls:
       httpsRedirect: true
     hosts:
-      - mlops.adimen.local
+      - mlops.adimen.tech

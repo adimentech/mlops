@@ -4,14 +4,14 @@ metadata:
   name: mlops
   namespace: istio-system
 spec:
-  commonName: mlops.adimen.local
-  secretName: mlops.adimen.local-tls
+  commonName: mlops.adimen.tech
+  secretName: mlops.adimen.tech-tls
   privateKey:
     algorithm: ECDSA
     size: 256
   issuerRef:
-    name: selfsigned
+    name: letsencrypt-adimen-dns
     kind: ClusterIssuer
     group: cert-manager.io
   dnsNames:
-    - mlops.adimen.local
+    - mlops.adimen.tech
