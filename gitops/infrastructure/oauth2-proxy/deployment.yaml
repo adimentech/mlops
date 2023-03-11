@@ -51,18 +51,18 @@ spec:
           - --cookie-samesite=lax
           - --cookie-secure=true
           - --cookie-httponly=true
-          - --cookie-refresh="4m"
-          - --email-domains="*"
+          - --cookie-refresh=4m
+          - --email-domains=*
           - --http-address=0.0.0.0:4180
-          - --oidc-issuer-url="https://mlops.adimen.local/auth/realms/mlops"
+          - --oidc-issuer-url=https://mlops.adimen.local/auth/realms/mlops
           - --pass-access-token=true
           - --pass-authorization-header=true
           - --pass-host-header=true
-          - --profile-url="https://mlops.adimen.local/auth/realms/mlops/protocol/openid-connect/userinfo"
+          - --profile-url=https://mlops.adimen.local/auth/realms/mlops/protocol/openid-connect/userinfo
           - --provider=oidc
           - --request-logging=true
           - --reverse-proxy=true
-          - --session-store-type="cookie"
+          - --session-store-type=cookie
           - --set-authorization-header=true
           - --set-xauthrequest=true
           - --silence-ping-logging=true
@@ -70,9 +70,9 @@ spec:
           - --skip-auth-strip-headers=false
           - --skip-jwt-bearer-tokens=true
           - --standard-logging=true
-          - --upstreams=[ "static://200" ]
-          - --validate-url="https://mlops.adimen.local/auth/realms/mlops/protocol/openid-connect/userinfo"
-          - --whitelist-domains=[".mlops.adimen.local"]
+          - --upstreams=static://200
+          - --validate-url=https://mlops.adimen.local/auth/realms/mlops/protocol/openid-connect/userinfo
+          - --whitelist-domains=.mlops.adimen.local
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
           valueFrom:
