@@ -75,7 +75,7 @@ data:
                   "periodic_fetch_interval_sec": 10
                 },
                 "client_id": "istio-mlops",
-                "client_secret": "iuq9NKgODCkn5VSwDTe7LamybKrzf2zw",
+                "client_secret": "saiUnEYhr5iYLGuAfbOMtBfHSEUYcjvE",
                 "scopes": [],
                 "cookie_name_prefix": "echoserver",
                 "id_token": {
