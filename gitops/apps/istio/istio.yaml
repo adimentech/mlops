@@ -10,6 +10,16 @@ spec:
         envoyExtAuthzGrpc:
           service: authservice.istio-system.svc.cluster.local
           port: "10003"
+      - name: oauth2-proxy
+        envoyExtAuthzHttp:
+          service: authservice.istio-system.svc.cluster.local
+          port: 10003
+          includeRequestHeadersInCheck:
+            - cookie
+          headersToUpstreamOnAllow:
+            - authorization
+          headersToDownstreamOnDeny:
+            - set-cookie
   components:
     ingressGateways:
       - name: istio-ingressgateway
