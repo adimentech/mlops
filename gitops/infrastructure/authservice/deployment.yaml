@@ -74,6 +74,7 @@ data:
                   "jwks_uri": "https://keycloak.local/realms/mlops/protocol/openid-connect/certs",
                   "periodic_fetch_interval_sec": 10
                 },
+                "skip_verify_peer_cert": "true",
                 "client_id": "istio-mlops",
                 "client_secret": "saiUnEYhr5iYLGuAfbOMtBfHSEUYcjvE",
                 "scopes": [],
