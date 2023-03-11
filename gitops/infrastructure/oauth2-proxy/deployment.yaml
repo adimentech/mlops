@@ -12,7 +12,7 @@ metadata:
   namespace: oauth2-proxy
 stringData:
   OAUTH2_PROXY_CLIENT_ID: oauth2
-  OAUTH2_PROXY_CLIENT_SECRET: a0rzikv4igYekgTMi0NZS3ClT7k2jGOP
+  OAUTH2_PROXY_CLIENT_SECRET: Xgx2DT4lahWOYjtRCGl8Iz1LloVVlJo3
   OAUTH2_PROXY_COOKIE_SECRET: MnZ0OVlscmdDVElkMkpnc1F2L1JFeFFDNjk5RVIzQXk=
 ---
 apiVersion: v1
