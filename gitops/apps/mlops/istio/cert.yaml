@@ -10,7 +10,7 @@ spec:
     algorithm: ECDSA
     size: 256
   issuerRef:
-    name: letsencrypt-adimen-dns
+    name: acme-adimen-tech
     kind: ClusterIssuer
     group: cert-manager.io
   dnsNames:

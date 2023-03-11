@@ -11,13 +11,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-adimen-dns
+  name: acme-mlops-adimen-tech
 spec:
   acme:
     email: dkuleshov@adimen.tech
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-adimen-dns
+      name: acme-mlops-adimen-tech
     solvers:
       - selector:
           dnsZones:
@@ -26,6 +26,29 @@ spec:
           route53:
             region: us-east-1
             hostedZoneID: Z03332811LKIQRPWXKUUL
+            accessKeyID: AKIAWN2KE5ZVV5CFHBHK
+            secretAccessKeySecretRef:
+              name: aws-credentials
+              key: AWS_SECRET_ACCESS_KEY
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: acme-adimen-tech
+spec:
+  acme:
+    email: dkuleshov@adimen.tech
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: acme-adimen-tech
+    solvers:
+      - selector:
+          dnsZones:
+            - adimen.tech
+        dns01:
+          route53:
+            region: us-east-1
+            hostedZoneID: Z1YPRFSNHLQMMH
             accessKeyID: AKIAWN2KE5ZVV5CFHBHK
             secretAccessKeySecretRef:
               name: aws-credentials
