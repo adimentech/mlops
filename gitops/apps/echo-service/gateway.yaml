@@ -67,6 +67,4 @@ spec:
     # Extension provider configured when we installed Istio
     name: authservice-http
   rules:
-  - to:
-      - operation:
-          hosts: ["*echoserver.local"]
+  - {}
