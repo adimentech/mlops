@@ -6,20 +6,6 @@ metadata:
 spec:
   meshConfig:
     extensionProviders:
-      - name: authservice-grpc
-        envoyExtAuthzGrpc:
-          service: authservice.istio-system.svc.cluster.local
-          port: "10003"
-      - name: authservice-http
-        envoyExtAuthzHttp:
-          service: authservice.istio-system.svc.cluster.local
-          port: 10003
-          includeRequestHeadersInCheck:
-            - cookie
-          headersToUpstreamOnAllow:
-            - authorization
-          headersToDownstreamOnDeny:
-            - set-cookie
       - name: oauth2-proxy
         envoyExtAuthzHttp:
           service: oauth2-proxy.oauth2-proxy.svc.cluster.local
