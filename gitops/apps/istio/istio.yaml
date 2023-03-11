@@ -6,11 +6,11 @@ metadata:
 spec:
   meshConfig:
     extensionProviders:
-      - name: authservice
+      - name: authservice-grpc
         envoyExtAuthzGrpc:
           service: authservice.istio-system.svc.cluster.local
           port: "10003"
-      - name: oauth2-proxy
+      - name: authservice-http
         envoyExtAuthzHttp:
           service: authservice.istio-system.svc.cluster.local
           port: 10003
