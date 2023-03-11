@@ -18,3 +18,16 @@ spec:
               - /admin/*
               - /resources/*
               - /realms/*
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: echoserver
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: echoserver
+  jwtRules:
+  - issuer: "https://mlops.adimen.tech/realms/mlops"
+    forwardOriginalToken: true
