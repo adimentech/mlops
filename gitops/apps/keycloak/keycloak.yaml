@@ -14,9 +14,9 @@ spec:
       name: keycloak-db-secret
       key: password
   http:
-    tlsSecret: keycloak-certs
+    httpEnabled: true
   hostname:
-    hostname: keycloak.local
+    hostname: mlops.adimen.local
   ingress:
     enabled: false
 
