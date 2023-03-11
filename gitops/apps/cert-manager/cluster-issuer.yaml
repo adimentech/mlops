@@ -25,7 +25,7 @@ spec:
         dns01:
           route53:
             region: us-east-1
-            hostedZoneID: Z060197228D8COEU1MGSM
+            hostedZoneID: Z1YPRFSNHLQMMH
             accessKeyID: AKIAWN2KE5ZVV5CFHBHK
             secretAccessKeySecretRef:
               name: aws-credentials
