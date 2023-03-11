@@ -1,8 +1,8 @@
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
-  namespace: istio-system
   name: istiocontrolplane
+  namespace: istio-system
 spec:
   meshConfig:
     extensionProviders:
