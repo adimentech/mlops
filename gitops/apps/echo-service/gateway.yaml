@@ -69,4 +69,4 @@ spec:
   rules:
   - to:
       - operation:
-          hosts: ["echoserver.local"]
+          hosts: ["*echoserver.local"]
