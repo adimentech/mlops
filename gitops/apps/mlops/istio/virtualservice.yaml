@@ -11,7 +11,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /auth
+        prefix: /admin
+    - uri:
+        prefix: /realms
     route:
     - destination:
         host: keycloak-service.keycloak.svc.cluster.local

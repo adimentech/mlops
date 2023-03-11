@@ -54,11 +54,11 @@ spec:
           - --cookie-refresh=4m
           - --email-domain=*
           - --http-address=0.0.0.0:4180
-          - --oidc-issuer-url=https://mlops.adimen.tech/auth/realms/mlops
+          - --oidc-issuer-url=https://mlops.adimen.tech/realms/mlops
           - --pass-access-token=true
           - --pass-authorization-header=true
           - --pass-host-header=true
-          - --profile-url=https://mlops.adimen.tech/auth/realms/mlops/protocol/openid-connect/userinfo
+          - --profile-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
           - --provider=oidc
           - --request-logging=true
           - --reverse-proxy=true
@@ -71,7 +71,7 @@ spec:
           - --skip-jwt-bearer-tokens=true
           - --standard-logging=true
           - --upstream=static://200
-          - --validate-url=https://mlops.adimen.tech/auth/realms/mlops/protocol/openid-connect/userinfo
+          - --validate-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
           - --whitelist-domain=.mlops.adimen.tech
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
