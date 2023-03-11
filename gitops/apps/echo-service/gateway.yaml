@@ -65,6 +65,6 @@ spec:
   action: CUSTOM
   provider:
     # Extension provider configured when we installed Istio
-    name: authservice-http
+    name: oauth2-proxy
   rules:
   - {}
