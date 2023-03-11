@@ -58,6 +58,8 @@ spec:
         - --skip-provider-button=true
         - --whitelist-domain=*
         - --oidc-issuer-url=https://keycloak.local/realms/mlops
+        - --ssl-insecure-skip-verify=true
+        - --ssl-upstream-insecure-skip-verify=true
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
           valueFrom:
