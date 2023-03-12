@@ -16,6 +16,8 @@ spec:
         prefix: /realms
     - uri:
         prefix: /resources
+    - uri:
+        prefix: /js
     route:
     - destination:
         host: keycloak-service.keycloak.svc.cluster.local
