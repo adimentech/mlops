@@ -5,6 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   meshConfig:
+    defaultConfig:
+      gatewayTopology:
+        numTrustedProxies: 2
     extensionProviders:
       - name: oauth2-proxy
         envoyExtAuthzHttp:
