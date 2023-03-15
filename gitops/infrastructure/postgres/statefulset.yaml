@@ -30,7 +30,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: postgres-data
+            claimName: postgres
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -43,6 +43,6 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 1Gi
 
 
