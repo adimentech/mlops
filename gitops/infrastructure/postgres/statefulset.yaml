@@ -38,6 +38,7 @@ metadata:
   name: postgres
   namespace: db
 spec:
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce
   resources:
