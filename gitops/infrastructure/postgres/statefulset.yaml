@@ -24,3 +24,22 @@ spec:
               value: /data/pgdata
             - name: POSTGRES_DB
               value: keycloak
+          volumeMounts:
+            - mountPath: /data/pgdata
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: postgres-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres
+  namespace: db
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+
+
