@@ -6,6 +6,6 @@ configMapGenerator:
 - literals:
   - ADMIN=
   - WORKLOAD_IDENTITY=
-  - USERID_HEADER="kubeflow-userid"
+  - USERID_HEADER="x-auth-request-user"
   - USERID_PREFIX=
   name: config
