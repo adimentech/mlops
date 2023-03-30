@@ -1,0 +1,30 @@
+---
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: account-service
+  namespace: apps
+spec:
+  selector:
+    matchLabels:
+      app: account-service
+  jwtRules:
+  - issuer: "https://mlops.adimen.tech/realms/mlops"
+    jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
+    forwardOriginalToken: true
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: account-service
+  namespace: apps
+spec:
+  selector:
+    matchLabels:
+      app: account-service
+  action: CUSTOM
+  provider:
+    # Extension provider configured when we installed Istio
+    name: oauth2-proxy
+  rules:
+  - {}
