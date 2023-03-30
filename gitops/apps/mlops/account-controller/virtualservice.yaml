@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: account-service
+  namespace: apps
+spec:
+  hosts:
+  - mlops.adimen.tech
+  gateways:
+  - mlops
+  http:
+  - match:
+    - uri:
+        prefix: /api
+    route:
+    - destination:
+        host: account-service.apps.svc.cluster.local
+        port:
+          number: 80
