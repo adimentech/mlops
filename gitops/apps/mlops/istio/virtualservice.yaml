@@ -41,6 +41,6 @@ spec:
             number: 4180
   - route:
     - destination:
-        host: mlops.apps.svc.cluster.local
+        host: account-service.apps.svc.cluster.local
         port:
           number: 80

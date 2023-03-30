@@ -28,3 +28,13 @@ spec:
     name: oauth2-proxy
   rules:
   - {}
+---
+kind: DestinationRule
+metadata:
+  name: account-service
+  namespace: apps
+spec:
+  host: account-service.apps.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: SIMPLE
