@@ -65,6 +65,7 @@ spec:
           - --session-store-type=cookie
           - --set-authorization-header=true
           - --set-xauthrequest=true
+          - --pass-user-headers
           - --silence-ping-logging=true
           - --skip-provider-button=true
           - --skip-auth-strip-headers=false
