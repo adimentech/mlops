@@ -17,3 +17,13 @@ spec:
         host: account-service.apps.svc.cluster.local
         port:
           number: 80
+  - match:
+    - uri:
+        prefix: /api/swagger
+    rewrite:
+      uri: /
+    route:
+      - destination:
+          host: account-service.apps.svc.cluster.local
+          port:
+            number: 80
