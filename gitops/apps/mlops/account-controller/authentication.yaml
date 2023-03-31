@@ -28,14 +28,14 @@ spec:
     name: oauth2-proxy
   rules:
   - {}
----
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: account-service
-  namespace: apps
-spec:
-  host: account-service.apps.svc.cluster.local
-  trafficPolicy:
-    tls:
-      mode: SIMPLE
+#---
+#apiVersion: networking.istio.io/v1alpha3
+#kind: DestinationRule
+#metadata:
+#  name: account-service
+#  namespace: apps
+#spec:
+#  host: account-service.apps.svc.cluster.local
+#  trafficPolicy:
+#    tls:
+#      mode: SIMPLE
