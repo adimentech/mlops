@@ -20,3 +20,6 @@ spec:
         ports:
         - containerPort: 11000
           name: http
+        env:
+          - name: SERVE_HTTP
+            value: "true"
