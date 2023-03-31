@@ -5,7 +5,7 @@ metadata:
   namespace: apps
 spec:
   hosts:
-  - mlops.adimen.tech
+  - "*"
   gateways:
   - mlops
   http:
