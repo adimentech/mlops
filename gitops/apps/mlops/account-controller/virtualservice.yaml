@@ -7,7 +7,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - mlops
+  - default/mlops
   http:
   - match:
     - uri:
