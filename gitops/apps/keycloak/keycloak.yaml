@@ -4,6 +4,7 @@ metadata:
   name: keycloak
 spec:
   instances: 1
+  image: quay.io/phasetwo/phasetwo-keycloak:21.0.2.1680284608
   db:
     vendor: postgres
     host: postgres.db
