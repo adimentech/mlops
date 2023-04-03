@@ -64,7 +64,6 @@ spec:
           - --reverse-proxy=true
           - --session-store-type=cookie
           - --set-authorization-header=true
-          - --set-xauthrequest=true
           - --silence-ping-logging=true
           - --skip-provider-button=true
           - --skip-auth-strip-headers=false
@@ -73,6 +72,7 @@ spec:
           - --upstream=static://200
           - --validate-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
           - --whitelist-domain=.mlops.adimen.tech
+          - --alpha-config=/config/alpha-config.yaml
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
           valueFrom:
@@ -101,3 +101,10 @@ spec:
           httpGet:
             path: /ping
             port: 4180
+        volumeMounts:
+          - mountPath: /config/
+            name: config
+      volumes:
+        - name: config
+          configMap:
+            name: oauth2-proxy-config
