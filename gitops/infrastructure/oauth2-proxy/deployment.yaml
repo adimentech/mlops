@@ -1,110 +1,104 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: oauth2-proxy
-  labels:
-    istio-injection: enabled
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: oauth2-proxy
-  namespace: oauth2-proxy
-stringData:
-  OAUTH2_PROXY_CLIENT_ID: oauth2
-  OAUTH2_PROXY_CLIENT_SECRET: yytQK33jARdkxtxzdw4htkF4AfesTi7s
-  OAUTH2_PROXY_COOKIE_SECRET: MnZ0OVlscmdDVElkMkpnc1F2L1JFeFFDNjk5RVIzQXk=
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: oauth2-proxy
-  namespace: oauth2-proxy
-spec:
-  selector:
-    app: oauth2-proxy
-  ports:
-  - name: http
-    port: 4180
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: oauth2-proxy
-  namespace: oauth2-proxy
-spec:
-  selector:
-    matchLabels:
-      app: oauth2-proxy
-  template:
-    metadata:
-      labels:
-        app: oauth2-proxy
-    spec:
-      containers:
-      - name: oauth2-proxy
-        image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
-        args:
-          - --auth-logging=true
-          - --cookie-expire=4h
-          - --cookie-name=_oauth2_proxy_istio_ingressgateway
-          - --cookie-samesite=lax
-          - --cookie-secure=true
-          - --cookie-httponly=true
-          - --cookie-refresh=4m
-          - --email-domain=*
-          - --http-address=0.0.0.0:4180
-          - --oidc-issuer-url=https://mlops.adimen.tech/realms/mlops
-          - --pass-access-token=true
-          - --pass-authorization-header=true
-          - --pass-host-header=true
-          - --profile-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
-          - --provider=oidc
-          - --request-logging=true
-          - --reverse-proxy=true
-          - --session-store-type=cookie
-          - --set-authorization-header=true
-          - --silence-ping-logging=true
-          - --skip-provider-button=true
-          - --skip-auth-strip-headers=false
-          - --skip-jwt-bearer-tokens=true
-          - --standard-logging=true
-          - --upstream=static://200
-          - --validate-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
-          - --whitelist-domain=.mlops.adimen.tech
-          - --alpha-config=/config/alpha-config.yaml
-        env:
-        - name: OAUTH2_PROXY_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: oauth2-proxy
-              key: OAUTH2_PROXY_CLIENT_ID
-        - name: OAUTH2_PROXY_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: oauth2-proxy
-              key: OAUTH2_PROXY_CLIENT_SECRET
-        - name: OAUTH2_PROXY_COOKIE_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: oauth2-proxy
-              key: OAUTH2_PROXY_COOKIE_SECRET
-        resources:
-          requests:
-            cpu: 10m
-            memory: 100Mi
-        ports:
-        - containerPort: 4180
-          protocol: TCP
-        readinessProbe:
-          periodSeconds: 3
-          httpGet:
-            path: /ping
-            port: 4180
-        volumeMounts:
-          - mountPath: /config/
-            name: config
-      volumes:
-        - name: config
-          configMap:
-            name: oauth2-proxy-config
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: oauth2-proxy
+#  labels:
+#    istio-injection: enabled
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: oauth2-proxy
+#  namespace: oauth2-proxy
+#stringData:
+#  OAUTH2_PROXY_CLIENT_ID: oauth2
+#  OAUTH2_PROXY_CLIENT_SECRET: yytQK33jARdkxtxzdw4htkF4AfesTi7s
+#  OAUTH2_PROXY_COOKIE_SECRET: MnZ0OVlscmdDVElkMkpnc1F2L1JFeFFDNjk5RVIzQXk=
+#---
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: oauth2-proxy
+#  namespace: oauth2-proxy
+#spec:
+#  selector:
+#    app: oauth2-proxy
+#  ports:
+#  - name: http
+#    port: 4180
+#---
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: oauth2-proxy
+#  namespace: oauth2-proxy
+#spec:
+#  selector:
+#    matchLabels:
+#      app: oauth2-proxy
+#  template:
+#    metadata:
+#      labels:
+#        app: oauth2-proxy
+#    spec:
+#      containers:
+#      - name: oauth2-proxy
+#        image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+#        args:
+#          - --auth-logging=true
+#          - --cookie-expire=4h
+#          - --cookie-name=_oauth2_proxy_istio_ingressgateway
+#          - --cookie-samesite=lax
+#          - --cookie-secure=true
+#          - --cookie-httponly=true
+#          - --cookie-refresh=4m
+#          - --email-domain=*
+#          - --http-address=0.0.0.0:4180
+#          - --oidc-issuer-url=https://mlops.adimen.tech/realms/mlops
+#          - --pass-access-token=true
+#          - --pass-authorization-header=true
+#          - --pass-host-header=true
+#          - --profile-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
+#          - --provider=oidc
+#          - --request-logging=true
+#          - --reverse-proxy=true
+#          - --session-store-type=cookie
+#          - --set-authorization-header=true
+#          - --set-xauthrequest=true
+#          - --pass-user-headers=true
+#          - --silence-ping-logging=true
+#          - --skip-provider-button=true
+#          - --skip-auth-strip-headers=false
+#          - --skip-jwt-bearer-tokens=true
+#          - --standard-logging=true
+#          - --upstream=static://200
+#          - --validate-url=https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
+#          - --whitelist-domain=.mlops.adimen.tech
+#        env:
+#        - name: OAUTH2_PROXY_CLIENT_ID
+#          valueFrom:
+#            secretKeyRef:
+#              name: oauth2-proxy
+#              key: OAUTH2_PROXY_CLIENT_ID
+#        - name: OAUTH2_PROXY_CLIENT_SECRET
+#          valueFrom:
+#            secretKeyRef:
+#              name: oauth2-proxy
+#              key: OAUTH2_PROXY_CLIENT_SECRET
+#        - name: OAUTH2_PROXY_COOKIE_SECRET
+#          valueFrom:
+#            secretKeyRef:
+#              name: oauth2-proxy
+#              key: OAUTH2_PROXY_COOKIE_SECRET
+#        resources:
+#          requests:
+#            cpu: 10m
+#            memory: 100Mi
+#        ports:
+#        - containerPort: 4180
+#          protocol: TCP
+#        readinessProbe:
+#          periodSeconds: 3
+#          httpGet:
+#            path: /ping
+#            port: 4180
