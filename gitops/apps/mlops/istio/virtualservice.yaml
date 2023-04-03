@@ -48,8 +48,8 @@ spec:
           port:
             number: 80
 
-#  - route:
-#    - destination:
-#        host: echoserver.default.svc.cluster.local
-#        port:
-#          number: 80
+  - route:
+    - destination:
+        host: instance-service.mlops.svc.cluster.local
+        port:
+          number: 80
