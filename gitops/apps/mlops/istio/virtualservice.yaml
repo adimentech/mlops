@@ -30,7 +30,7 @@ spec:
     - destination:
         host: oauth2-proxy.oauth2-proxy.svc.cluster.local
         port:
-          number: 4180
+          number: 80
   - match:
     - uri:
         prefix: /echo
