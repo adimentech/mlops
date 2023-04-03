@@ -39,6 +39,15 @@ spec:
           host: echoserver.default.svc.cluster.local
           port:
             number: 80
+  - match:
+    - uri:
+        prefix: /api/v1/instances
+    route:
+      - destination:
+          host: instance-service.mlops.svc.cluster.local
+          port:
+            number: 80
+
 #  - route:
 #    - destination:
 #        host: echoserver.default.svc.cluster.local

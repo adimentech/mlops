@@ -23,9 +23,6 @@ spec:
       enabled: true
       rootUser: root
       rootPassword: "mlpass"
-      usernames: ["account-service"]
-      passwords: ["vie9aZoo8pho"]
-      databases: ["accounts"]
     externalAccess:
       enabled: false
       autoDiscovery:
