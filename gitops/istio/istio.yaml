@@ -21,7 +21,7 @@ spec:
             - x-auth-request-user
             - x-auth-request-email
             - x-auth-request-access-token
-            - x-auth-request-prefered-username
+            - x-auth-request-preferred-username
           headersToDownstreamOnDeny: [ "content-type", "set-cookie" ]
   components:
     ingressGateways:
