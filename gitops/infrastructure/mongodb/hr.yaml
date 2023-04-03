@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mongodb
+  namespace: db
+spec:
+  chart:
+    spec:
+      chart: mongodb
+      version: 13.1.7
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+  interval: 1m0s
+  releaseName: mongodb
+  targetNamespace: db
+  values:
+    architecture: standalone
+    persistence:
+      size: 1Gi
+    auth:
+      enabled: true
+      rootUser: root
+      rootPassword: "mlpass"
+      usernames: ["account-service"]
+      passwords: ["vie9aZoo8pho"]
+      databases: ["accounts"]
+    externalAccess:
+      enabled: false
+      autoDiscovery:
+        enabled: true
+    rbac:
+      create: true
+    serviceAccount:
+      create: true
