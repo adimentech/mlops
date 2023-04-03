@@ -32,14 +32,14 @@ spec:
           redeemURL: https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/token
           profileURL: https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
           validateURL: https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/userinfo
-        scope: "openid email profile groups"
-        oidcConfig:
-          emailClaim: email.  # Name of the clain in JWT containing the E-Mail
-          groupsClaim: groups # Name of the claim in JWT containing the Groups
-          userIDClaim: email  # Name of the claim in JWT containing the User ID
-          skipDiscovery: true # You can try using the well-knwon endpoint directly for auto discovery, here we won't use it
-          issuerURL: https://mlops.adimen.tech/realms/mlops
-          jwksURL: https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs
+          scope: "openid email profile groups"
+          oidcConfig:
+            emailClaim: email.  # Name of the clain in JWT containing the E-Mail
+            groupsClaim: groups # Name of the claim in JWT containing the Groups
+            userIDClaim: email  # Name of the claim in JWT containing the User ID
+            skipDiscovery: true # You can try using the well-knwon endpoint directly for auto discovery, here we won't use it
+            issuerURL: https://mlops.adimen.tech/realms/mlops
+            jwksURL: https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs
         upstreamConfig:
           upstreams:
             - id: static_200
