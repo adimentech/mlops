@@ -22,22 +22,6 @@ spec:
   selector:
     matchLabels:
       app: account-service
-  action: CUSTOM
-  provider:
-    # Extension provider configured when we installed Istio
-    name: oauth2-proxy
-  rules:
-  - {}
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: account-service
-  namespace: apps
-spec:
-  selector:
-    matchLabels:
-      app: account-service
   action: ALLOW
   rules:
     - when:
