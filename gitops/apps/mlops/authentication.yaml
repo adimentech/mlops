@@ -4,7 +4,7 @@
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
-  name: allauth
+  name: allow-authenticated
   namespace: mlops
 spec:
   selector:
@@ -15,11 +15,11 @@ spec:
       jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
       forwardOriginalToken: true
 ---
-# Here we allow only requests with token, as no selector provided will be applied to all requests
+# Here we allow only requests with token, as no selector provided will be applied to all requests in namespace
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-  name: allauth
+  name: allow-authenticated
   namespace: mlops
 spec:
   action: ALLOW
@@ -27,3 +27,12 @@ spec:
     - when:
         - key: request.auth.claims[iss]
           values: [ "https://mlops.adimen.tech/realms/mlops" ]
+---
+# To block all unauthenticated requests
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+ name: allow-nothing
+ namespace: mlops
+spec:
+  {}
