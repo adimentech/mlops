@@ -25,6 +25,9 @@ spec:
     matchLabels:
       app: istio-ingressgateway  # Applies to all requests for this gateway
   rules:
-  - from:
-    - source:
-        requestPrincipals: ["*"]
+    - to:
+        - operation:
+            paths: [ "/api" ]
+      from:
+        - source:
+            requestPrincipals: [ "*" ]

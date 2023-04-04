@@ -1,0 +1,15 @@
+# Here we allow only requests with token, as no selector provided will be applied to all requests in namespace
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: instance-service
+  namespace: mlops
+spec:
+  selector:
+    matchLabels:
+      app: instance-service
+  action: ALLOW
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values: [ "https://mlops.adimen.tech/realms/mlops" ]
