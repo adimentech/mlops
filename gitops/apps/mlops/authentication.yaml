@@ -32,7 +32,9 @@ spec:
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
- name: allow-nothing
- namespace: mlops
+  name: allow-nothing
+  namespace: mlops
 spec:
-  {}
+  action: DENY
+  rules:
+    - {}
