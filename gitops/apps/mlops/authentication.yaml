@@ -1,15 +1,15 @@
 ---
 # We require ALL requests to this Gateway to have JWT token
-# By default requests with no token will passed this, but with wring tokens will not
+# By default requests with no token will passed this, but with wrong tokens will not
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
 metadata:
-  name: allow-authenticated
-  namespace: mlops
+  name: allow-jwt-istio-ingressgateway
+  namespace: istio-system
 spec:
   selector:
     matchLabels:
-      app: istio-ingressgateway  # Default ingressgateway
+      app: istio-ingressgateway  # Applies to all requests for this gateway
   jwtRules:
     - issuer: "https://mlops.adimen.tech/realms/mlops"
       jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
