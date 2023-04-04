@@ -1,19 +1,5 @@
 ---
 apiVersion: security.istio.io/v1beta1
-kind: RequestAuthentication
-metadata:
-  name: echoserver
-  namespace: default
-spec:
-  selector:
-    matchLabels:
-      app: echoserver
-  jwtRules:
-  - issuer: "https://mlops.adimen.tech/realms/mlops"
-    jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
-    forwardOriginalToken: true
----
-apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: echoserver
