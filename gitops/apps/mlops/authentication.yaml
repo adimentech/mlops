@@ -14,27 +14,3 @@ spec:
     - issuer: "https://mlops.adimen.tech/realms/mlops"
       jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
       forwardOriginalToken: true
----
-# Here we allow only requests with token, as no selector provided will be applied to all requests in namespace
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: allow-authenticated
-  namespace: mlops
-spec:
-  action: ALLOW
-  rules:
-    - when:
-        - key: request.auth.claims[iss]
-          values: [ "https://mlops.adimen.tech/realms/mlops" ]
----
-# To block all unauthenticated requests
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: allow-nothing
-  namespace: mlops
-spec:
-  action: DENY
-  rules:
-    - {}
