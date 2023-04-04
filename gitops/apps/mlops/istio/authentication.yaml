@@ -26,19 +26,19 @@ spec:
   - issuer: "https://mlops.adimen.tech/realms/mlops"
     jwksUri: "https://mlops.adimen.tech/realms/mlops/protocol/openid-connect/certs"
     forwardOriginalToken: true
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: mlops-api
-  namespace: mlops
-spec:
-  selector:
-    matchLabels:
-      app: instance-service
-  action: CUSTOM
-  provider:
-    # Extension provider configured when we installed Istio
-    name: oauth2-proxy
-  rules:
-  - {}
+#---
+#apiVersion: security.istio.io/v1beta1
+#kind: AuthorizationPolicy
+#metadata:
+#  name: mlops-api
+#  namespace: mlops
+#spec:
+#  selector:
+#    matchLabels:
+#      app: instance-service
+#  action: CUSTOM
+#  provider:
+#    # Extension provider configured when we installed Istio
+#    name: oauth2-proxy
+#  rules:
+#  - {}
