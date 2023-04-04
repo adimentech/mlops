@@ -19,12 +19,9 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: require-jwt-for-all
-  namespace: mlops  # All workloads in mlops namespace
+  namespace: mlops-system  # All workloads in mlops-system namespace
 spec:
   rules:
-    - to:
-        - operation:
-            paths: [ "/api" ]
-      from:
-        - source:
-            requestPrincipals: [ "*" ]
+  - from:
+    - source:
+        requestPrincipals: ["*"]
